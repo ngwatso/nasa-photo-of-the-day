@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./App.css";
 import axios from "axios";
+import Apod from "./Apod"
 
 
 let date = function() {
@@ -17,30 +18,28 @@ let date = function() {
 
 console.log(date())
 
-function axiosData() {
-  axios
-    .get(`https://api.nasa.gov/planetary/apod?api_key=F5nq55ivbKdgbLmJ82khNLjE0emrxfKho6ddDenJ&date=${date()}`)
-    .then(res => console.log('APOD', res.data))
-    .catch(err => console.log('Something went wrong!!', err));
-}
-
-axiosData()
 
 function App() {
 
   const [nasaData, setNasaData] = useState([]);
 
-
-
+  useEffect(() => {
+    console.log('fetching data')
+    axios
+      .get(`https://api.nasa.gov/planetary/apod?api_key=F5nq55ivbKdgbLmJ82khNLjE0emrxfKho6ddDenJ&date=${date()}`)
+      .then(res => setNasaData(res.data))
+      .catch(err => console.log('Something went wrong!!', err));
+  }, [])
+  console.log(nasaData)
 
 
 
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      
+        <Apod imgData={nasaData} />
+      
+      
     </div>
   );
 }
