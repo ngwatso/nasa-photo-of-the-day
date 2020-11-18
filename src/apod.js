@@ -11,7 +11,7 @@ export default function Apod(props) {
 
     return (
         <div className='container'>
-            <h1> Nasa Photo of the Day!</h1>
+            <h1> NASA Photo of the Day!</h1>
             <h3> {imgData.date}</h3>
             <img src={imgData.url} alt="Nasa Photo of the Day" />
             <h2>{imgData.title}</h2>
