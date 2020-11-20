@@ -35,7 +35,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: "url('./images/alexander-andrews-HzT5Du-UFW8-unsplash.jpg')" }}>
       
         <Apod imgData={nasaData} />
       

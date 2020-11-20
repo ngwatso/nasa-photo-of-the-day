@@ -1,8 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
 import "./index.css";
 import App from "./App";
-import Apod from "./Apod";
+import { ThemeProvider } from 'styled-components'
+import theme from './theme'
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+ReactDOM.render(
+<ThemeProvider theme={theme}>
+    <App />
+</ThemeProvider>, 
+document.getElementById("root"));
